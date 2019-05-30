@@ -36,3 +36,19 @@ def notification(request):
     all_notifications = notifications.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request,'notifications.html',{"notifications":all_notifications})
+
+@login_required(login_url='/accounts/login/')
+def blog(request):
+    current_user=request.user
+    profile=Profile.objects.get(username=current_user)
+    blogposts = BlogPost.objects.filter(neighbourhood=profile.neighbourhood)
+
+    return render(request,'blog.html',{"blogposts":blogposts})
+
+@login_required(login_url='/accounts/login/')
+def health(request):
+    current_user=request.user
+    profile=Profile.objects.get(username=current_user)
+    healthservices = Health.objects.filter(neighbourhood=profile.neighbourhood)
+
+    return render(request,'health.html',{"healthservices":healthservices})
