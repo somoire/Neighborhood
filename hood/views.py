@@ -186,3 +186,41 @@ def new_notification(request):
         form = notificationsForm()
 
     return render(request,'notifications_form.html',{"form":form})
+
+@login_required(login_url='/accounts/login/')
+def update_profile(request):
+    current_user=request.user
+    if request.method=="POST":
+        instance = Profile.objects.get(username=current_user)
+        form =ProfileForm(request.POST,request.FILES,instance=instance)
+        if form.is_valid():
+            profile = form.save(commit = False)
+            profile.username = current_user
+            profile.save()
+
+        return redirect('Index')
+
+    elif Profile.objects.get(username=current_user):
+        profile = Profile.objects.get(username=current_user)
+        form = ProfileForm(instance=profile)
+    else:
+        form = ProfileForm()
+
+    return render(request,'update_profile.html',{"form":form})
+
+
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    if 'blog' in request.GET and request.GET["blog"]:
+        search_term = request.GET.get("blog")
+        searched_blogposts = BlogPost.search_blogpost(search_term)
+        message=f"{search_term}"
+
+        print(searched_blogposts)
+
+        return render(request,'search.html',{"message":message,"blogs":searched_blogposts})
+
+    else:
+        message="You haven't searched for any term"
+        return render(request,'search.html',{"message":message})
