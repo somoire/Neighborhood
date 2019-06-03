@@ -17,7 +17,7 @@ An app for neighbourhoods. This app helps neighbourhoods communicate by providin
 | 5.Makemigrations and migrate. |
 | 6.Use the command python3.6 manage.py runserver to open the project on your browser. |
 
-| Click on this link https://mtaa-yangu.herokuapp.com/
+Or you can click on this link https://mtaa-yangu.herokuapp.com/
 
 ## Technologies Used
 
@@ -41,7 +41,7 @@ It is run on a virtual environment.
 For user, open project on browser.
 
 ## Known Bugs
-No bugs I know of.
+No known bugs at the moment.If any kindly contact me via the provided contact below
 
 ## Contact
 
