@@ -19,7 +19,7 @@ urlpatterns=[
     url(r'^new/notification$',views.new_notification, name='new-notification'),
     url(r'^update/profile$',views.update_profile, name='update-profile'),
     url(r'^search/',views.search_results, name='search_results'),
-    url(r'^create/profile$',views.create_profile, name='create-profile'),
+
     
 
 ]
