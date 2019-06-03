@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'tinymce',
     'rest_framework',
-    'django_registration',
+    'registration',
 ]
 
 MIDDLEWARE = [
